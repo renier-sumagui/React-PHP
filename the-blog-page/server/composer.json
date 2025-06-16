@@ -1,0 +1,17 @@
+{
+    "name": "renier/the-blog-page",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Renier Sumagui",
+            "email": "reniersumagui178@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
