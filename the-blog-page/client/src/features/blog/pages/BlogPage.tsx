@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { ReviewForm } from "./components/ReviewForm";
-import { Comment } from "./components/Comment";
-import { useAuth } from "../auth/context/useAuth";
-import { getAllComments } from "./api/commentApi";
+import { ReviewForm, Comment } from "../components";
+import { useAuth } from "../../auth/context/useAuth";
+import { getAllComments } from "../api/commentApi";
 
-import type { CommentModel, GetAllCommentsResponse } from "./types/BlogModel";
+import type { CommentModel } from "../types/BlogModel";
+import type { ApiResponse } from "../../../types/ApiResponse";
 
 function BlogPage() {
     const { user, isLoggedIn } = useAuth();
@@ -13,7 +13,7 @@ function BlogPage() {
 
     useEffect(() => {
         async function getComments() {
-            const res: GetAllCommentsResponse = await getAllComments();
+            const res: ApiResponse<CommentModel[]> = await getAllComments();
 
             if (res.success && res.data.length > 0) {
                 setComments(res.data);

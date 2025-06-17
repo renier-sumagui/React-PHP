@@ -1,9 +1,10 @@
 import { api } from "../../../lib/api";
 import axios from "axios";
 
-import type { CreateReplyData, CreateReplyResponse } from "../types/BlogModel";
+import type { CreateReplyData, ReplyModel } from "../types/BlogModel";
+import type { ApiResponse } from "../../../types/ApiResponse";
 
-async function postReply(data: CreateReplyData): Promise<CreateReplyResponse> {
+async function postReply(data: CreateReplyData): Promise<ApiResponse<ReplyModel>> {
     try {
         const response = await api.post("/reply/create", data);
 

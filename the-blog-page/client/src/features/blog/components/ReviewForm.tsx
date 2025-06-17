@@ -3,7 +3,8 @@ import { postComment } from "../api/commentApi";
 import { useAuth } from "../../auth/context/useAuth";
 
 import type { Dispatch, FormEvent, SetStateAction } from "react";
-import type { CommentModel, CreateCommentResponse } from "../types/BlogModel";
+import type { CommentModel } from "../types/BlogModel";
+import type { ApiResponse } from "../../../types/ApiResponse";
 
 interface ReviewFormProps {
     setComments: Dispatch<SetStateAction<CommentModel[]>>;
@@ -18,7 +19,7 @@ function ReviewForm({ setComments }: ReviewFormProps) {
 
         if (user) {
             console.log(review);
-            const res: CreateCommentResponse = await postComment({ userId: user.id, content: review  });
+            const res: ApiResponse<CommentModel> = await postComment({ userId: user.id, content: review  });
 
             if (res.success) {
                 console.log(res.data);
